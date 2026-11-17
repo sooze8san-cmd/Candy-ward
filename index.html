@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candy World 🍭</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, sans-serif;
+  background: #fff4f8;
+  color: #63365f;
+}
+
+header {
+  background: linear-gradient(135deg,#ffb6d2,#e8d7ff);
+  text-align: center;
+  padding: 25px 10px;
+}
+
+header h1 {
+  color: #a32c78;
+  font-size: 34px;
+  margin: 5px;
+}
+
+header p {
+  color: #63365f;
+}
+
+nav {
+  background: white;
+  padding: 15px 5px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav a {
+  color: #a32c78;
+  text-decoration: none;
+  margin: 0 8px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.hero {
+  text-align: center;
+  padding: 45px 15px;
+  background: linear-gradient(135deg,#ead7ff,#fff0b5,#ffd6e7);
+}
+
+.hero h2 {
+  color: #a32c78;
+  font-size: 27px;
+}
+
+.hero p {
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+button {
+  background: #ec72ac;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(.96);
+}
+
+section {
+  padding: 25px 15px;
+  text-align: center;
+}
+
+section h2 {
+  color: #a32c78;
+  margin-bottom: 25px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+
+.card {
+  background: white;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px #eac5d9;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 135px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+.card h3 {
+  color: #a32c78;
+  font-size: 17px;
+  margin: 14px 0 8px;
+}
+
+.card p {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.price {
+  color: #e66b9e;
+  font-weight: bold;
+  font-size: 16px !important;
+}
+
+.card button {
+  width: 100%;
+  padding: 10px 5px;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+#cart-section {
+  background: #ffe4ef;
+  border-radius: 25px;
+  margin: 20px 12px;
+  padding: 25px 12px;
+}
+
+.cart-item {
+  background: white;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cart-item button {
+  padding: 7px 12px;
+  font-size: 12px;
+}
+
+.total {
+  color: #a32c78;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px;
+}
+
+footer {
+  background: #ffb6d2;
+  text-align: center;
+  padding: 25px;
+  margin-top: 25px;
+}
+
+@media(max-width:350px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🍭 Candy World 🍬</h1>
+<p>عالم من السعادة والحلويات!</p>
+</header>
+
+<nav>
+<a href="#home">الرئيسية</a>
+<a href="#products">منتجاتنا</a>
+<a href="#cart-section">السلة 🛒</a>
+<a href="#contact">تواصل معنا</a>
+</nav>
+
+<div class="hero" id="home">
+<h2>مرحباً بكم في عالم الحلوى! 🧁</h2>
+<p>كل قطعة حلوى تحمل معها ابتسامة جميلة 💗</p>
+<button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+اكتشف الحلويات
+</button>
+</div>
+
+<section id="products">
+<h2>🍬 قائمة الحلويات 🍬</h2>
+
+<div class="products">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1575224300306-1b8da36134ec?w=500" alt="مصاصات">
+<h3>المصاصات 🍭</h3>
+<p>ألوان ونكهات رائعة</p>
+<p class="price">500 جنيه</p>
+<button onclick="addToCart('المصاصات',500)">أضيفي للسلة</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1511381939415-e44015466834?w=500" alt="شوكولاتة">
+<h3>الشوكولاتة 🍫</h3>
+<p>طعم لذيذ ومميز</p>
+<p class="price">1000 جنيه</p>
+<button onclick="addToCart('الشوكولاتة',1000)">أضيفي للسلة</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=500" alt="كب كيك">
+<h3>الكب كيك 🧁</h3>
+<p>حلويات بألوان جميلة</p>
+<p class="price">1500 جنيه</p>
+<button onclick="addToCart('الكب كيك',1500)">أضيفي للسلة</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500" alt="دونات">
+<h3>الدونات 🍩</h3>
+<p>لذيذة ومزينة</p>
+<p class="price">1200 جنيه</p>
+<button onclick="addToCart('الدونات',1200)">أضيفي للسلة</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1560008581-09826d1de69e?w=500" alt="آيس كريم">
+<h3>الآيس كريم 🍦</h3>
+<p>نكهات منعشة</p>
+<p class="price">2000 جنيه</p>
+<button onclick="addToCart('الآيس كريم',2000)">أضيفي للسلة</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=500" alt="بسكويت">
+<h3>البسكويت 🍪</h3>
+<p>قرمشة وسعادة</p>
+<p class="price">800 جنيه</p>
+<button onclick="addToCart('البسكويت',800)">أضيفي للسلة</button>
+</div>
+
+</div>
+</section>
+
+<section id="cart-section">
+<h2>🛒 سلة مشترياتك</h2>
+
+<div id="cart">
+<p>لم تضيفي أي منتجات بعد 💗</p>
+</div>
+
+<p class="total" id="total">الإجمالي: 0 جنيه</p>
+
+<button onclick="clearCart()">إفراغ السلة</button>
+</section>
+
+<section id="contact">
+<h2>💗 نسعد بزيارتكم</h2>
+<p>شكراً لاختياركم Candy World</p>
+<p>🍬 عالم مليء بالحلوى والابتسامات 🍭</p>
+</section>
+
+<footer>
+<p>🍭 Candy World © 2026</p>
+<p>صنع بكل حب 💕</p>
+</footer>
+
+<script>
+let cart = [];
+
+function addToCart(name, price) {
+  cart.push({name, price});
+  updateCart();
+}
+
+function updateCart() {
+  let cartDiv = document.getElementById("cart");
+  let total = 0;
+
+  if(cart.length === 0) {
+    cartDiv.innerHTML = "<p>لم تضيفي أي منتجات بعد 💗</p>";
+  } else {
+    cartDiv.innerHTML = "";
+
+    cart.forEach((item, index) => {
+      total += item.price;
+
+      cartDiv.innerHTML += `
+        <div class="cart-item">
+          <span>${item.name} - ${item.price} جنيه</span>
+          <button onclick="removeItem(${index})">حذف</button>
+        </div>
+      `;
+    });
+  }
+
+  document.getElementById("total").innerText =
+    "الإجمالي: " + total + " جنيه";
+}
+
+function removeItem(index) {
+  cart.splice(index,1);
+  updateCart();
+}
+
+function clearCart() {
+  cart = [];
+  updateCart();
+}
+</script>
+
+</body>
+  </html>
